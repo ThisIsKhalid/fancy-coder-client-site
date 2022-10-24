@@ -1,41 +1,37 @@
+import Lottie from "lottie-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
+import coder from "../../Assets/coder.json";
 
 const Home = () => {
   return (
-    <section className=" text-gray-800">
-      <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-        <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-          <h1 className="text-5xl font-bold leading-none sm:text-6xl">
-            Ac mattis
-            <span className="text-violet-400">senectus</span>erat pharetra
-          </h1>
-          <p className="mt-6 mb-8 text-lg sm:mb-12">
-            Dictum aliquam porta in condimentum ac integer turpis pulvinar, est
-            scelerisque ligula sem
-          </p>
-          <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-            <Link
-              rel="noopener noreferrer"
-              href="#"
-              className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 text-gray-900"
-            >
-              Suspendisse
-            </Link>
-            <Link
-              rel="noopener noreferrer"
-              href="#"
-              className="px-8 py-3 text-lg font-semibold border rounded border-gray-100"
-            >
-              Malesuada
-            </Link>
-          </div>
-        </div>
-        <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-          
+    <div className="container mx-auto grid md:grid-cols-2 items-center justify-center">
+      <div className="">
+        <h1 className="text-5xl font-mono font-semibold text-blue-500">
+          Learn <span className="text-orange-500">Without</span> Limits
+        </h1>
+        <h3 className="text-2xl text-gray-700 font-medium">
+          Your Career in Web Development Starts Here
+        </h3>
+        <p className="text-lg">
+          Our full stack curriculum is free and supported by a passionate open
+          source community.
+        </p>
+        <div className="my-5 inline-block">
+          <Link
+            to="/courses"
+            className="bg-blue-400 hover:bg-blue-600 px-5 py-3 rounded-md text-white text-lg font-medium flex items-center"
+          >
+            <span className="mr-3">Courses</span>
+            <FaArrowRight />
+          </Link>
         </div>
       </div>
-    </section>
+      <div>
+        <Lottie className="h-96" animationData={coder} loop={true} />;
+      </div>
+    </div>
   );
 };
 
