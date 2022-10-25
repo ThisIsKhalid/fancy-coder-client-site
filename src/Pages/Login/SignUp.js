@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 const SignUp = () => {
+
+  const {createUser} = useContext(AuthContext);
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -13,7 +16,13 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(name, photoURL, email, password);
+    // console.log(name, photoURL, email, password);
+    createUser(email, password)
+    .then(res => {
+      const user = res.user;
+      console.log(user);
+    })
+    .catch(error => console.error(error))
   };
 
   return (
