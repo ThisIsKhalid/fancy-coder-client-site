@@ -20,7 +20,7 @@ const Home = () => {
         </p>
         <div className="my-5 inline-block">
           <Link
-            to="/courses"
+            to="/courses/01"
             className="bg-blue-400 hover:bg-blue-600 px-5 py-3 rounded-md text-white text-lg font-medium flex items-center"
           >
             <span className="mr-3">Courses</span>

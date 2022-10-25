@@ -10,9 +10,9 @@ const LeftSideNav = () => {
   }, []);
 
   return (
-    <div className="border border-red-500">
-      <h1 className="text-2xl font-semibold text-orange-500 font-mono">
-        What you want to learn?
+    <div className="">
+      <h1 className="text-2xl font-semibold text-orange-500 font-mono my-5 text-center">
+        Explore Our Courses
       </h1>
       <div className="flex flex-col gap-5 px-2">
         {courses.map((course) => (
