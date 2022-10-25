@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 
 const SignIn = () => {
+
+  const {signIn} = useContext(AuthContext);
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    // console.log(email, password);
+
+    signIn(email, password)
+    .then(res => {
+      console.log(res.user);
+    })
+    .catch(error => {
+      console.error(error);
+    })
+  }
+
     return (
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-50 shadow-lg mt-5 border border-gray-200 mx-auto">
         <h1 className="text-2xl font-bold text-center">Login</h1>
         <form
-          
+          onSubmit={handleSubmit}
           className="space-y-6 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-1">
