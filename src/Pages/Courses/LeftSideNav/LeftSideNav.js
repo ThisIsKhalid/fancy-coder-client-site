@@ -14,7 +14,7 @@ const LeftSideNav = () => {
       <h1 className="text-2xl font-semibold text-orange-500 font-mono my-5 text-center">
         Explore Our Courses
       </h1>
-      <div className="flex flex-col gap-5 px-2">
+      <div className="grid grid-cols-1 gap-5 px-2">
         {courses.map((course) => (
           <CoursesList key={course.id} course={course}></CoursesList>
         ))}

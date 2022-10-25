@@ -13,7 +13,7 @@ const CourseDetails = ({ course }) => {
   const { img, title, ratings, enrolled, views, description, time, level } =
     course;
   return (
-    <div className="pl-10">
+    <div className="sm:pl-5">
       <img src={img} alt="" />
       <h1 className="text-5xl text-cyan-500 font-bold">{title}</h1>
       <div className="flex items-center gap-5 text-lg">
