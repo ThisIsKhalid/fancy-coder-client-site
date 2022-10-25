@@ -43,22 +43,22 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  to="/"
-                  aria-label="Product pricing"
-                  title="Product pricing"
+                  to="/signup"
+                  aria-label="Sign Up"
+                  title="Sign Up"
                   className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                 >
-                  Pricing
+                  Sign Up
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/"
-                  aria-label="About us"
-                  title="About us"
+                  to="/signin"
+                  aria-label="Sign in"
+                  title="Sign in"
                   className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                 >
-                  About us
+                  Sign In
                 </Link>
               </li>
               <li>
@@ -151,32 +151,22 @@ const Header = () => {
                         </li>
                         <li>
                           <Link
-                            to="/"
-                            aria-label="Product pricing"
-                            title="Product pricing"
+                            to="/signup"
+                            aria-label="Sign Up"
+                            title="Sign Up"
                             className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                           >
-                            Pricing
+                            Sign Up
                           </Link>
                         </li>
                         <li>
                           <Link
-                            to="/"
-                            aria-label="About us"
-                            title="About us"
+                            to="/signin"
+                            aria-label="Sign In"
+                            title="Sign In"
                             className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                           >
-                            About us
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/"
-                            className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                            aria-label="Sign up"
-                            title="Sign up"
-                          >
-                            Sign up
+                            Sign In
                           </Link>
                         </li>
                       </ul>

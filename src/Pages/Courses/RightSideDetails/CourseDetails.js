@@ -41,7 +41,7 @@ const CourseDetails = ({ course }) => {
         </p>
         <p className="my-3">{description}</p>
       </div>
-      <div className="w-3/4 text-gray-700">
+      <div className="w-3/4 text-gray-700 my-5">
         <div className="h-14 flex items-center ">
           <p className="border p-2 rounded-full border-gray-400 mr-2 text-orange-400">
             <FaBuromobelexperte />
@@ -73,7 +73,12 @@ const CourseDetails = ({ course }) => {
           <p>English</p>
         </div>
       </div>
-      <button className="bg-blue-400 hover:bg-blue-600 px-2 py-2 rounded-lg text-gray-100">Get premium access</button>
+      <button className="bg-yellow-400 hover:bg-yellow-600 px-2 py-2 rounded-lg text-gray-100 mr-3">
+        Enroll Now ( free )
+      </button>
+      <button className="bg-blue-400 hover:bg-blue-600 px-2 py-2 rounded-lg text-gray-100">
+        Get premium access
+      </button>
     </div>
   );
 };
