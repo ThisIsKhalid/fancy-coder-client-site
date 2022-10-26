@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   FaBook,
   FaBuromobelexperte,
@@ -9,26 +9,17 @@ import {
   FaStar,
   FaStarHalfAlt,
 } from "react-icons/fa";
-import { useReactToPrint } from "react-to-print";
 
 const CourseDetails = ({ course }) => {
-  const componentRef = useRef();
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-  });
-
   const { img, title, ratings, enrolled, views, description, time, level } =
     course;
 
   return (
-    <div className="sm:pl-5" ref={componentRef}>
+    <div className="sm:pl-5">
       <img src={img} alt="" />
       <div className="flex items-center">
         <h1 className="text-5xl text-cyan-500 font-bold mr-5">{title}</h1>
-        <button
-          
-          onClick={handlePrint}
-        >
+        <button>
           <FaPrint />
         </button>
       </div>
