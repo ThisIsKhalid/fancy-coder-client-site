@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 
 const CourseDetails = ({ course }) => {
-  const { img, title, ratings, enrolled, views, description, time, level } =
+  const { id, img, title, ratings, enrolled, views, description, time, level } =
     course;
 
   return (
@@ -84,7 +84,7 @@ const CourseDetails = ({ course }) => {
       <button className="bg-yellow-400 hover:bg-yellow-600 px-2 py-2 rounded-lg text-gray-100 mr-3">
         Enroll Now ( free )
       </button>
-      <Link to='/checkout' className="bg-blue-400 hover:bg-blue-600 px-2 py-2 rounded-lg text-gray-100">
+      <Link to={`/checkout/${id}`} className="bg-blue-400 hover:bg-blue-600 px-2 py-2 rounded-lg text-gray-100">
         Get premium access
       </Link>
     </div>

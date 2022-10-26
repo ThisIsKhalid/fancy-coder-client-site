@@ -57,8 +57,10 @@ export const router = createBrowserRouter([
         element: <SignIn></SignIn>,
       },
       {
-        path: "/checkout",
+        path: "/checkout/:id",
         element: <CheckOut></CheckOut>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/courses/${params.id}`),
       },
     ],
   },
