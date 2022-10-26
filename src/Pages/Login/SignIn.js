@@ -18,8 +18,8 @@ const SignIn = () => {
 
     signIn(email, password)
     .then(res => {
-      console.log(res.user);
       toast.success('Succesfully Sign In!!');
+      form.reset();
     })
     .catch(error => {
       console.error(error);
@@ -28,7 +28,7 @@ const SignIn = () => {
 
     return (
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-50 shadow-lg mt-5 border border-gray-200 mx-auto">
-        <h1 className="text-2xl font-bold text-center">Login</h1>
+        <h1 className="text-2xl font-bold text-center">Sign In</h1>
         <form
           onSubmit={handleSubmit}
           className="space-y-6 ng-untouched ng-pristine ng-valid"
@@ -89,8 +89,8 @@ const SignIn = () => {
 
         <p className="text-center sm:px-6 text-gray-600">
           Don't have an account?
-          <Link to="/register" className="underline text-orange-500">
-            Register
+          <Link to="/signup" className="underline text-orange-500">
+            Sign Up
           </Link>
         </p>
       </div>

@@ -6,7 +6,8 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const SignUp = () => {
 
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, emailVerify } =
+    useContext(AuthContext);
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -17,17 +18,20 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    //  creating user 
+    // <------------- creating user ------------>
     createUser(email, password)
     .then(res => {
         console.log(res.user);
         form.reset();
-      // updating profile
+      // <----------- updating profile ------------------>
       updateUserProfile({
         displayName: name, photoURL: photoURL
       })
       .then(() => {
-        toast.success('Profile Updated!')
+        toast.success('Profile Updated!');
+        // <------------ email verify -------------->
+        emailVerify()
+        .then(() => toast.info('Please check your email for verification link!'))
       })
       .catch(error => {
         console.error(error);
@@ -38,7 +42,7 @@ const SignUp = () => {
 
   return (
     <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-50 shadow-lg mt-5 border border-gray-200 mx-auto">
-      <h1 className="text-2xl font-bold text-center">Please Register</h1>
+      <h1 className="text-2xl font-bold text-center">Please Sign Up</h1>
       <form
         onSubmit={handleSignUp}
         className="space-y-6 ng-untouched ng-pristine ng-valid"

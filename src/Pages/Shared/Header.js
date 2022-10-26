@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import img from '../../Assets/programmer.png'
+import { AuthContext } from '../../context/AuthProvider';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const {user, logout} = useContext(AuthContext);
+    const handleSignOut = () => {
+      logout()
+      .then(() => toast.info('Succesfully Sign Out!'))
+      .catch(error => toast.error(error.message))
+    }
 
     return (
       <div className="bg-cyan-400">
@@ -11,8 +20,8 @@ const Header = () => {
           <div className="relative flex items-center justify-between">
             <Link
               to="/"
-              aria-label="The Fancy Coder"
-              title="The Fancy Coder"
+              aria-label="Fancy Coder"
+              title="Fancy Coder"
               className="inline-flex items-center"
             >
               <img className="h-10 w-10" src={img} alt="" />
@@ -41,26 +50,41 @@ const Header = () => {
                   Courses
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/signup"
-                  aria-label="Sign Up"
-                  title="Sign Up"
-                  className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                >
-                  Sign Up
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/signin"
-                  aria-label="Sign in"
-                  title="Sign in"
-                  className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                >
-                  Sign In
-                </Link>
-              </li>
+              {user?.email ? (
+                <li>
+                  <button
+                    onClick={handleSignOut}
+                    aria-label="Sign in"
+                    title="Sign in"
+                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                  >
+                    Sign Out
+                  </button>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <Link
+                      to="/signup"
+                      aria-label="Sign Up"
+                      title="Sign Up"
+                      className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                    >
+                      Sign Up
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/signin"
+                      aria-label="Sign in"
+                      title="Sign in"
+                      className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                    >
+                      Sign In
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
             <div className="lg:hidden">
               <button
@@ -91,13 +115,13 @@ const Header = () => {
                       <div>
                         <Link
                           to="/"
-                          aria-label="The Fancy Coder"
-                          title="The Fancy Coder"
+                          aria-label="Fancy Coder"
+                          title="Fancy Coder"
                           className="inline-flex items-center"
                         >
-                            <img className='h-10 w-10' src={img} alt="" />
+                          <img className="h-10 w-10" src={img} alt="" />
                           <span className="ml-2 text-xl font-bold tracking-wide text-blue-500 uppercase">
-                            Fancy<span className='text-orange-500'>Coder</span>
+                            Fancy<span className="text-orange-500">Coder</span>
                           </span>
                         </Link>
                       </div>
@@ -108,7 +132,10 @@ const Header = () => {
                           className="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                           onClick={() => setIsMenuOpen(false)}
                         >
-                          <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
+                          <svg
+                            className="w-5 text-gray-600"
+                            viewBox="0 0 24 24"
+                          >
                             <path
                               fill="currentColor"
                               d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
@@ -139,26 +166,41 @@ const Header = () => {
                             Courses
                           </Link>
                         </li>
-                        <li>
-                          <Link
-                            to="/signup"
-                            aria-label="Sign Up"
-                            title="Sign Up"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          >
-                            Sign Up
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/signin"
-                            aria-label="Sign In"
-                            title="Sign In"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          >
-                            Sign In
-                          </Link>
-                        </li>
+                        {user?.email ? (
+                          <li>
+                            <button
+                              onClick={handleSignOut}
+                              aria-label="Sign In"
+                              title="Sign In"
+                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                            >
+                              Sign Out
+                            </button>
+                          </li>
+                        ) : (
+                          <>
+                            <li>
+                              <Link
+                                to="/signup"
+                                aria-label="Sign Up"
+                                title="Sign Up"
+                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                              >
+                                Sign Up
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                to="/signin"
+                                aria-label="Sign In"
+                                title="Sign In"
+                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                              >
+                                Sign In
+                              </Link>
+                            </li>
+                          </>
+                        )}
                       </ul>
                     </nav>
                   </div>
