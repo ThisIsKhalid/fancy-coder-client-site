@@ -1,21 +1,37 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   FaBook,
   FaBuromobelexperte,
   FaCertificate,
   FaHourglassStart,
+  FaPrint,
   FaSignal,
   FaStar,
   FaStarHalfAlt,
 } from "react-icons/fa";
+import { useReactToPrint } from "react-to-print";
 
 const CourseDetails = ({ course }) => {
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
   const { img, title, ratings, enrolled, views, description, time, level } =
     course;
+
   return (
-    <div className="sm:pl-5">
+    <div className="sm:pl-5" ref={componentRef}>
       <img src={img} alt="" />
-      <h1 className="text-5xl text-cyan-500 font-bold">{title}</h1>
+      <div className="flex items-center">
+        <h1 className="text-5xl text-cyan-500 font-bold mr-5">{title}</h1>
+        <button
+          
+          onClick={handlePrint}
+        >
+          <FaPrint />
+        </button>
+      </div>
       <div className="flex items-center gap-5 text-lg">
         <p className="flex text-orange-400">
           <span>
