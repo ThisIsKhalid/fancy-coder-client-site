@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CoursesList from "./CoursesList";
 
-const LeftSideNav = () => {
+const LeftSideDetails = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
@@ -24,4 +24,4 @@ const LeftSideNav = () => {
   );
 };
 
-export default LeftSideNav;
+export default LeftSideDetails;
