@@ -65,7 +65,7 @@ const SignIn = () => {
             </div>
           </div>
           <button className="block w-full p-3 text-center rounded-sm text-gray-900 bg-violet-400 hover:bg-violet-600">
-            Log in
+            Sign In
           </button>
         </form>
         <div className="flex items-center pt-4 space-x-1">
