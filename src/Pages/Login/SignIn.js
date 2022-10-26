@@ -29,7 +29,7 @@ const SignIn = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.error(error);
+        toast.error(error.message);
       });
   };
 
