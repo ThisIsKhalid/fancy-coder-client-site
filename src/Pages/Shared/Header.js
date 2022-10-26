@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import img from "../../Assets/programmer.png";
 import { AuthContext } from "../../context/AuthProvider";
+import Toogle from "../Other/Toogle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,7 +37,7 @@ const Header = () => {
                 to="/home"
                 aria-label="Home"
                 title="Home"
-                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-orange-400"
               >
                 Home
               </Link>
@@ -46,35 +47,57 @@ const Header = () => {
                 to="/courses"
                 aria-label="Courses"
                 title="Courses"
-                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-orange-400"
               >
                 Courses
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/blog"
+                aria-label="Blog"
+                title="Blog"
+                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-orange-400"
+              >
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/faq"
+                aria-label="faq"
+                title="faq"
+                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-orange-400"
+              >
+                FAQ
               </Link>
             </li>
             {user?.email ? (
               <>
                 <li>
-                  {user?.photoURL ? (
-                    <img
-                      className="h-12 w-12 rounded-full"
-                      src={user?.photoURL}
-                      aria-label={user?.displayName}
-                      title={user?.displayName}
-                      alt=""
-                    />
-                  ) : (
-                    <FaUserCircle
-                      aria-label={user?.displayName}
-                      title={user?.displayName}
-                    ></FaUserCircle>
-                  )}
+                  <Link to="/profile">
+                    {user?.photoURL ? (
+                      <img
+                        className="h-12 w-12 rounded-full"
+                        src={user?.photoURL}
+                        aria-label={user?.displayName}
+                        title={user?.displayName}
+                        alt=""
+                      />
+                    ) : (
+                      <FaUserCircle
+                        aria-label={user?.displayName}
+                        title={user?.displayName}
+                      ></FaUserCircle>
+                    )}
+                  </Link>
                 </li>
                 <li>
                   <button
                     onClick={handleSignOut}
                     aria-label="Sign in"
                     title="Sign in"
-                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-orange-400"
                   >
                     Sign Out
                   </button>
@@ -87,7 +110,7 @@ const Header = () => {
                     to="/signup"
                     aria-label="Sign Up"
                     title="Sign Up"
-                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-orange-400"
                   >
                     Sign Up
                   </Link>
@@ -97,13 +120,16 @@ const Header = () => {
                     to="/signin"
                     aria-label="Sign in"
                     title="Sign in"
-                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-orange-400"
                   >
                     Sign In
                   </Link>
                 </li>
               </>
             )}
+            <li>
+              <Toogle></Toogle>
+            </li>
           </ul>
           <div className="lg:hidden">
             <button
@@ -182,17 +208,57 @@ const Header = () => {
                           Courses
                         </Link>
                       </li>
+                      <li>
+                        <Link
+                          to="/blog"
+                          aria-label="Blog"
+                          title="Blog"
+                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        >
+                          Blog
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/faq"
+                          aria-label="FAQ"
+                          title="FAQ"
+                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        >
+                          FAQ
+                        </Link>
+                      </li>
                       {user?.email ? (
-                        <li>
-                          <button
-                            onClick={handleSignOut}
-                            aria-label="Sign In"
-                            title="Sign In"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          >
-                            Sign Out
-                          </button>
-                        </li>
+                        <>
+                          <li>
+                            <Link to="/profile">
+                              {user?.photoURL ? (
+                                <img
+                                  className="h-12 w-12 rounded-full"
+                                  src={user?.photoURL}
+                                  aria-label={user?.displayName}
+                                  title={user?.displayName}
+                                  alt=""
+                                />
+                              ) : (
+                                <FaUserCircle
+                                  aria-label={user?.displayName}
+                                  title={user?.displayName}
+                                ></FaUserCircle>
+                              )}
+                            </Link>
+                          </li>
+                          <li>
+                            <button
+                              onClick={handleSignOut}
+                              aria-label="Sign In"
+                              title="Sign In"
+                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                            >
+                              Sign Out
+                            </button>
+                          </li>
+                        </>
                       ) : (
                         <>
                           <li>
