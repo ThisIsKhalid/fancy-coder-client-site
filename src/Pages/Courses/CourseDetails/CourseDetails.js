@@ -10,19 +10,26 @@ import {
   FaStarHalfAlt,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Pdf from "react-to-pdf";
+
+const ref = React.createRef();
 
 const CourseDetails = ({ course }) => {
   const { id, img, title, ratings, enrolled, views, description, time, level } =
     course;
 
   return (
-    <div className="sm:pl-5">
+    <div className="sm:pl-5" ref={ref}>
       <img src={img} alt="" />
       <div className="flex items-center">
         <h1 className="text-5xl text-cyan-500 font-bold mr-5">{title}</h1>
-        <button>
-          <FaPrint />
-        </button>
+        <Pdf targetRef={ref} filename={`${title}.pdf`}>
+          {({ toPdf }) => (
+            <button onClick={toPdf}>
+              <FaPrint />
+            </button>
+          )}
+        </Pdf>
       </div>
       <div className="flex items-center gap-5 text-lg">
         <p className="flex text-orange-400">
@@ -84,7 +91,10 @@ const CourseDetails = ({ course }) => {
       <button className="bg-yellow-400 hover:bg-yellow-600 px-2 py-2 rounded-lg text-gray-100 mr-3">
         Enroll Now ( free )
       </button>
-      <Link to={`/checkout/${id}`} className="bg-blue-400 hover:bg-blue-600 px-2 py-2 rounded-lg text-gray-100">
+      <Link
+        to={`/checkout/${id}`}
+        className="bg-blue-400 hover:bg-blue-600 px-2 py-2 rounded-lg text-gray-100"
+      >
         Get premium access
       </Link>
     </div>
