@@ -1,7 +1,7 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthProvider";
 
@@ -16,6 +16,7 @@ const SignUp = () => {
     googleSignIn,
     githubSignIn,
   } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -39,9 +40,10 @@ const SignUp = () => {
           .then(() => {
             toast.success("Profile Updated!");
             // <------------ email verify -------------->
-            emailVerify().then(() =>
-              toast.info("Please check your email for verification link!")
-            );
+            emailVerify().then(() => {
+              toast.info("Please check your email for verification link!");
+              navigate('/');
+            });
           })
           .catch((error) => {
             console.error(error);
@@ -52,13 +54,19 @@ const SignUp = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn(googleProvider)
-      .then(() => toast.success("Succesfully signin with Google!!"))
+      .then(() => {
+        toast.success("Succesfully signin with Google!!");
+        navigate('/')
+      })
       .catch((error) => toast.error(error.message));
   };
 
   const handleGithubSignIn = () => {
     githubSignIn(githubProvider)
-      .then(() => toast.success("Succesfully signin with Github!!"))
+      .then(() => {
+        toast.success("Succesfully signin with Github!!");
+        navigate('/')
+      })
       .catch((error) => toast.error(error.message));
   };
 
