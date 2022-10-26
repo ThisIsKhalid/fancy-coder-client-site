@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthProvider";
 
 const SignUp = () => {
 
-  const {createUser} = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -16,11 +17,21 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    // console.log(name, photoURL, email, password);
+    //  creating user 
     createUser(email, password)
     .then(res => {
-      const user = res.user;
-      console.log(user);
+        console.log(res.user);
+        form.reset();
+      // updating profile
+      updateUserProfile({
+        displayName: name, photoURL: photoURL
+      })
+      .then(() => {
+        toast.success('Profile Updated!')
+      })
+      .catch(error => {
+        console.error(error);
+      })
     })
     .catch(error => console.error(error))
   };
