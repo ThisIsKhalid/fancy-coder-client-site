@@ -1,12 +1,16 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthProvider";
 
+
+const googleProvider = new GoogleAuthProvider();
+
 const SignUp = () => {
 
-  const { createUser, updateUserProfile, emailVerify } =
+  const { createUser, updateUserProfile, emailVerify, googleSignIn } =
     useContext(AuthContext);
 
   const handleSignUp = (event) => {
@@ -38,6 +42,12 @@ const SignUp = () => {
       })
     })
     .catch(error => console.error(error))
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn(googleProvider)
+      .then(() => toast.success("Succesfully signin with Google!!"))
+      .catch((error) => toast.error(error.message));
   };
 
   return (
@@ -107,7 +117,7 @@ const SignUp = () => {
         <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
       </div>
       <div className="flex flex-row justify-evenly">
-        <button className="text-3xl">
+        <button onClick={handleGoogleSignIn} className="text-3xl">
           <FaGoogle></FaGoogle>
         </button>
         <button className="text-3xl">

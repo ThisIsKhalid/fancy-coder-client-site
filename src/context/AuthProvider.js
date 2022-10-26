@@ -4,6 +4,7 @@ import {
   onAuthStateChanged,
   sendEmailVerification,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -24,17 +25,21 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const googleSignIn = (provider) => {
+    return signInWithPopup(auth, provider);
+  };
+
   const updateUserProfile = (profile) => {
     return updateProfile(auth.currentUser, profile);
-  }
+  };
 
   const emailVerify = () => {
     return sendEmailVerification(auth.currentUser);
-  }
+  };
 
   const logout = () => {
     return signOut(auth);
-  }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (createUser) => {
@@ -44,7 +49,15 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  const authInfo = { user, createUser, updateUserProfile, emailVerify, signIn, logout };
+  const authInfo = {
+    user,
+    createUser,
+    updateUserProfile,
+    emailVerify,
+    signIn,
+    googleSignIn,
+    logout,
+  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
