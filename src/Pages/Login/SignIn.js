@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider';
 
 const SignIn = () => {
@@ -18,6 +19,7 @@ const SignIn = () => {
     signIn(email, password)
     .then(res => {
       console.log(res.user);
+      toast.success('Succesfully Sign In!!');
     })
     .catch(error => {
       console.error(error);
