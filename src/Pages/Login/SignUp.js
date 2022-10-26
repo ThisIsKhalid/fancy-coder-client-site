@@ -1,17 +1,21 @@
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthProvider";
 
-
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const SignUp = () => {
-
-  const { createUser, updateUserProfile, emailVerify, googleSignIn } =
-    useContext(AuthContext);
+  const {
+    createUser,
+    updateUserProfile,
+    emailVerify,
+    googleSignIn,
+    githubSignIn,
+  } = useContext(AuthContext);
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -24,29 +28,37 @@ const SignUp = () => {
 
     // <------------- creating user ------------>
     createUser(email, password)
-    .then(res => {
+      .then((res) => {
         console.log(res.user);
         form.reset();
-      // <----------- updating profile ------------------>
-      updateUserProfile({
-        displayName: name, photoURL: photoURL
+        // <----------- updating profile ------------------>
+        updateUserProfile({
+          displayName: name,
+          photoURL: photoURL,
+        })
+          .then(() => {
+            toast.success("Profile Updated!");
+            // <------------ email verify -------------->
+            emailVerify().then(() =>
+              toast.info("Please check your email for verification link!")
+            );
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       })
-      .then(() => {
-        toast.success('Profile Updated!');
-        // <------------ email verify -------------->
-        emailVerify()
-        .then(() => toast.info('Please check your email for verification link!'))
-      })
-      .catch(error => {
-        console.error(error);
-      })
-    })
-    .catch(error => console.error(error))
+      .catch((error) => console.error(error));
   };
 
   const handleGoogleSignIn = () => {
     googleSignIn(googleProvider)
       .then(() => toast.success("Succesfully signin with Google!!"))
+      .catch((error) => toast.error(error.message));
+  };
+
+  const handleGithubSignIn = () => {
+    githubSignIn(githubProvider)
+      .then(() => toast.success("Succesfully signin with Github!!"))
       .catch((error) => toast.error(error.message));
   };
 
@@ -120,7 +132,7 @@ const SignUp = () => {
         <button onClick={handleGoogleSignIn} className="text-3xl">
           <FaGoogle></FaGoogle>
         </button>
-        <button className="text-3xl">
+        <button onClick={handleGithubSignIn} className="text-3xl">
           <FaGithub></FaGithub>
         </button>
         <button className="text-3xl">

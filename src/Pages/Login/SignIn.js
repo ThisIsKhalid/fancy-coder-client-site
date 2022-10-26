@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -6,9 +6,10 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthProvider";
 
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const SignIn = () => {
-  const { signIn, googleSignIn } = useContext(AuthContext);
+  const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,6 +32,11 @@ const SignIn = () => {
   const handleGoogleSignIn = () => {
     googleSignIn(googleProvider)
       .then(() => toast.success("Succesfully signin with Google!!"))
+      .catch((error) => toast.error(error.message));
+  };
+  const handleGithubSignIn = () => {
+    githubSignIn(githubProvider)
+      .then(() => toast.success("Succesfully signin with Github!!"))
       .catch((error) => toast.error(error.message));
   };
 
@@ -85,7 +91,7 @@ const SignIn = () => {
         <button onClick={handleGoogleSignIn} className="text-3xl">
           <FaGoogle></FaGoogle>
         </button>
-        <button className="text-3xl">
+        <button onClick={handleGithubSignIn} className="text-3xl">
           <FaGithub></FaGithub>
         </button>
         <button className="text-3xl">
