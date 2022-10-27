@@ -11,7 +11,7 @@ const Home = () => {
     <div>
       <div className="bg-orange-50">
         <div className="container mx-auto grid md:grid-cols-2 items-center justify-center">
-          <div>
+          <div className="pl-5 sm:pl-0">
             <h1 className="text-5xl font-mono font-semibold text-blue-500">
               Learn <span className="text-orange-500">Without</span> Limits
             </h1>

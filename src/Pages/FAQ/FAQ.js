@@ -13,7 +13,7 @@ const FAQ = () => {
                 How to get Premium access?
               </summary>
               <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-300">
-                Select course from home page or in the navbar. Then you will find all courses. Select what you want to learn. Scroll down, you will see premium access button.  {" "}
+                Select Course from Home page or in the Navbar. Then you will find all Courses. Select what you want to learn. Scroll down, you will see premium access button.Please signup/signin before proceeding to the premium checkout page.{" "}
               </p>
             </details>
             <details className="w-full border border-gray-400 rounded-lg">
@@ -21,7 +21,7 @@ const FAQ = () => {
                 Is there any way to read offline?
               </summary>
               <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-300">
-                Yeah!! You can download pdf of our free version. Just click Courses in the navbar and select a course then you will find a print icon beside the Title.After Clicking it pdf file of that page wil be downloaded{" "}
+                Yeah!! You can download pdf of our free version. Just click Courses in the navbar and select a course then you will find a print icon beside the Title.After Clicking it pdf file of that page will be downloaded.{" "}
               </p>
             </details>
             <details className="w-full border border-gray-400 rounded-lg">
