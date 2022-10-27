@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import coder from "../../Assets/coder.json";
 import Report from "./Report";
+import GetUpdate from "./GetUpdate";
 
 const Home = () => {
   return (
@@ -37,6 +38,7 @@ const Home = () => {
         </div>
       </div>
       <Report></Report>
+      <GetUpdate></GetUpdate>
     </div>
   );
 };

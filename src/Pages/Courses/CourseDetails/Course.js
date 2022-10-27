@@ -15,9 +15,6 @@ const Course = () => {
         <CourseDetails key={course.id} course={course}></CourseDetails>
       </div>
     </div>
-    // <div className="my-5">
-    //   <CourseDetails key={course.id} course={course}></CourseDetails>
-    // </div>
   );
 };
 
