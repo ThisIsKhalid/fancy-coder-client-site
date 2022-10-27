@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthProvider";
 const Profile = () => {
     const {user} = useContext(AuthContext);
   return (
-    <div className="max-w-md p-8 sm:flex sm:space-x-6 bg-gray-900 text-gray-100 mx-auto mt-10 rounded-md">
+    <div className="max-w-md p-8 sm:flex sm:space-x-6 bg-gray-900 text-gray-100 mx-auto my-10 rounded-md">
       <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
         <img
           src={user?.photoURL}

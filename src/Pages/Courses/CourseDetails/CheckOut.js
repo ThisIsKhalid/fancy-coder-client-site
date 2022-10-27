@@ -11,7 +11,7 @@ const CheckOut = () => {
   }
 
   return (
-    <section className=" text-gray-900 pt-10">
+    <section className=" text-gray-900 py-10 bg-teal-900">
       <div className="">
         <h1 className="text-center text-3xl font-bold  text-orange-500 mb-5">Premium Version</h1>
       </div>

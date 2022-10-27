@@ -7,7 +7,7 @@ const Course = () => {
   const course = useLoaderData();
 
   return (
-    <div className="grid lg:grid-cols-5 sm:grid-cols-4 mt-5 gap-5">
+    <div className="grid lg:grid-cols-5 sm:grid-cols-4 my-5 gap-5">
       <div className="hidden sm:block">
         <LeftSideDetails></LeftSideDetails>
       </div>
