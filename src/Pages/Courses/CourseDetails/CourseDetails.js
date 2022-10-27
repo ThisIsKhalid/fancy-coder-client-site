@@ -31,7 +31,7 @@ const CourseDetails = ({ course }) => {
           )}
         </Pdf>
       </div>
-      <div className="flex items-center gap-5 text-lg">
+      <div className="flex items-center gap-5 text-lg mt-1">
         <p className="flex text-orange-400">
           <span>
             <FaStar></FaStar>

@@ -1,6 +1,6 @@
 # Fancy Coder
 
-Live site ->
+Live site -> https://fancy-coder-2cf01.web.app/
 
 ### Description
 
