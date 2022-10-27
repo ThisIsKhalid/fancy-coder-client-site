@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
-import Blog from "../Pages/Blog/Blog";
+import Blogs from "../Pages/Blog/Blogs";
 import CheckOut from "../Pages/Courses/CourseDetails/CheckOut";
 import Course from "../Pages/Courses/CourseDetails/Course";
 import Courses from "../Pages/Courses/CoursesNavAndCard/Courses";
@@ -43,8 +43,12 @@ export const router = createBrowserRouter([
           ),
       },
       {
-        path: "/blog",
-        element: <Blog></Blog>,
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+        loader: () =>
+          fetch(
+            "https://b610-lerning-platform-server-side-phi.vercel.app/blogs"
+          ),
       },
       {
         path: "/faq",
