@@ -30,7 +30,6 @@ const SignUp = () => {
     // <------------- creating user ------------>
     createUser(email, password)
       .then((res) => {
-        console.log(res.user);
         form.reset();
         // <----------- updating profile ------------------>
         updateUserProfile({
@@ -46,10 +45,10 @@ const SignUp = () => {
             });
           })
           .catch((error) => {
-            console.error(error);
+            toast.error(error.message);
           });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => toast.error(error.message));
   };
 
   const handleGoogleSignIn = () => {

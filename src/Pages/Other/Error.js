@@ -5,7 +5,6 @@ import errorAnime from '../../Assets/error.json';
 
 const Error = () => {
     const error = useRouteError();
-    console.log(error); 
   return (
     <section className="flex items-center h-full sm:p-16 text-gray-800">
       <div className="container flex flex-col items-center justify-center mx-auto space-y-8 text-center sm:max-w-md">
