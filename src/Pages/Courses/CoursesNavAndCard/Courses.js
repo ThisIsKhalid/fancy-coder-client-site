@@ -6,7 +6,7 @@ import RightSideCard from "./RightSideCard";
 const Courses = () => {
   const courses = useLoaderData();
   return (
-    <div className="bg-teal-900 py-20">
+    <div className="bg-cyan-50 py-20">
       <div className="grid sm:grid-cols-4 lg:grid-cols-5 gap-2">
         <div className=" flex sm:flex-col flex-wrap gap-3">
           {courses.map((course) => (
